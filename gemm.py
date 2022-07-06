@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import os
+os.environ['OMP_NUM_THREADS'] = '1'
 import time
 import numpy as np
 
@@ -13,7 +15,7 @@ if __name__ == "__main__":
 
     for i in range(10):
         st = time.monotonic()
-        C = A @ B
+        C = A @ B.T
         et = time.monotonic()
         s = et - st
 
@@ -22,3 +24,8 @@ if __name__ == "__main__":
     # Compute the theoritical flops
     # Online 267.4 Gflops
     # 8 cores
+
+    with open("/tmp/matmul", "wb") as f:
+        f.write(A.data)
+        f.write(B.data)
+        f.write(C.data)
