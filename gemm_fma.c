@@ -6,6 +6,7 @@
 #include <immintrin.h>
 
 //# define DEBUG
+//gcc -march=native -O gemm_fma.c && ./a.out
 
 #ifdef DEBUG
     #define N 8
